@@ -1,2 +1,2 @@
 # NoTime2Play
-NoTime2Play social media for Gamers with no time
+NoTime2Play social media for Gamers who have no time to play
