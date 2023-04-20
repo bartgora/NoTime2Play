@@ -8,6 +8,7 @@ Container(gateway,"Api Gateway","Zull/Spring Gateway")
 Container(security,"Auth Service","Oauth2")
 Container(application, "Application", "Domain")
 ContainerDb(database, "Database")
+ContainerDb(authDb, "Auth Database")
 }
 
 System(email, "Email Service")
@@ -19,4 +20,5 @@ Rel_L(gateway, security, "uses")
 Rel_L(application, database, "uses")
 Rel(application, email, "sends messages")
 Rel(user, email, "sends messages")
+Rel_L(security, authDb,"uses")
 @enduml
