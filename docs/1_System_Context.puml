@@ -1,14 +1,15 @@
 @startuml
 !include <C4/C4_Context>
 Person(gamer, "Gamer")
-System(main, "NoTime2Play")
+System(main, "NoTime2Play Portal")
 System(backend, "Backend")
 System(email, "Email Service")
 
 Rel(gamer, main, "uses", "create account, view profiles, create schedules")
-Rel(email, gamer, "send emails", "confirm/reset password")
-Rel(backend, email, "send password confirmations")
-Rel(main, backend, "uses", "All logic")
+Rel_Back(gamer, email, "send emails", "confirm/reset password")
+Rel_Neighbor(main, backend, "uses", "All logic")
+Rel_Neighbor(backend, email, "send password confirmations")
+
 
 
 @enduml

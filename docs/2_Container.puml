@@ -1,6 +1,22 @@
 @startuml
 !include <C4/C4_Container>
-Person(gamer, "User")
-Container(system,"System")
+Person(user, "User")
+
+System_Boundary(c1, ""){
+Container(webapp,"Web App","React App")
+Container(gateway,"Api Gateway","Zull/Spring Gateway")
+Container(application, "Application", "Koltin")
+ContainerDb(database, "Database")
+}
+
+
+System(email, "Email Service")
+
+Rel(user, webapp, "uses")
+Rel(webapp, gateway, "calls", "https")
+Rel_L(gateway, application, "uses")
+Rel_L(application, database, "uses")
+Rel(application, email, "sends messages")
+Rel_Back(user, email, "sends messages")
 
 @enduml
