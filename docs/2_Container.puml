@@ -2,10 +2,11 @@
 !include <C4/C4_Container>
 Person(user, "User")
 
-System_Boundary(c1, "Application"){
 Container(webapp,"Web App","React App")
+System_Boundary(c1, "Application"){
 Container(gateway,"Api Gateway","Zull/Spring Gateway")
-Container(application, "Application", "Koltin")
+Container(security,"Auth Service","Oauth2")
+Container(application, "Application", "Domain")
 ContainerDb(database, "Database")
 }
 
@@ -13,8 +14,9 @@ System(email, "Email Service")
 
 Rel(user, webapp, "uses")
 Rel(webapp, gateway, "calls", "https")
-Rel_L(gateway, application, "uses")
+Rel(gateway, application, "pass traffic")
+Rel_L(gateway, security, "uses")
 Rel_L(application, database, "uses")
 Rel(application, email, "sends messages")
-Rel_Back(user, email, "sends messages")
+Rel(user, email, "sends messages")
 @enduml
