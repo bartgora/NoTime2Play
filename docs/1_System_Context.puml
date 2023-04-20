@@ -9,7 +9,4 @@ Rel(gamer, main, "uses", "create account, view profiles, create schedules")
 Rel_Back(gamer, email, "send emails", "confirm/reset password")
 Rel_Neighbor(main, backend, "uses", "All logic")
 Rel_Neighbor(backend, email, "send password confirmations")
-
-
-
 @enduml

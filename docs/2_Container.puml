@@ -2,13 +2,12 @@
 !include <C4/C4_Container>
 Person(user, "User")
 
-System_Boundary(c1, ""){
+System_Boundary(c1, "Application"){
 Container(webapp,"Web App","React App")
 Container(gateway,"Api Gateway","Zull/Spring Gateway")
 Container(application, "Application", "Koltin")
 ContainerDb(database, "Database")
 }
-
 
 System(email, "Email Service")
 
@@ -18,5 +17,4 @@ Rel_L(gateway, application, "uses")
 Rel_L(application, database, "uses")
 Rel(application, email, "sends messages")
 Rel_Back(user, email, "sends messages")
-
 @enduml
